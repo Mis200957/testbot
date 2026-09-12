@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أفق | للحلول الرقمية والابتكار</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(17, 24, 39, 0.85);
+            border: 1px solid rgba(55, 65, 81, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 glass-card transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-gradient-to-tr from-brand-600 to-indigo-400 rounded-xl flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-brand-500/30">
+                        <i class="fa-solid font-bold fa-cube"></i>
+                    </div>
+                    <span class="text-2xl font-black bg-gradient-to-r from-brand-600 to-indigo-500 bg-clip-text text-transparent">
+                        أُفُق
+                    </span>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-base font-medium text-slate-600 dark:text-slate-300">
+                    <a href="#hero" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">الرئيسية</a>
+                    <a href="#about" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">من نحن</a>
+                    <a href="#services" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">الخدمات</a>
+                    <a href="#calculator" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">حاسبة المشروعات</a>
+                    <a href="#portfolio" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">أعمالنا</a>
+                    <a href="#contact" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">اتصل بنا</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden md:flex items-center gap-4">
+                    <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-brand-600 transition-all">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button onclick="openModal()" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-semibold shadow-lg shadow-brand-600/20 hover:shadow-brand-600/40 transition-all transform hover:-translate-y-0.5">
+                        طلب استشارة
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="themeToggleMobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button id="menuBtn" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 bg-white dark:bg-slate-900 space-y-3">
+            <a href="#hero" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-brand-600">الرئيسية</a>
+            <a href="#about" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-brand-600">من نحن</a>
+            <a href="#services" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-brand-600">الخدمات</a>
+            <a href="#calculator" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-brand-600">حاسبة المشروعات</a>
+            <a href="#portfolio" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-brand-600">أعمالنا</a>
+            <a href="#contact" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-brand-600">اتصل بنا</a>
+            <button onclick="openModal()" class="w-full mt-2 py-3 bg-brand-600 text-white rounded-xl font-semibold shadow-md">
+                طلب استشارة
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden py-20 lg:py-28">
+        <div class="absolute top-1/4 right-10 w-72 h-72 bg-brand-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 text-center lg:text-right">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 font-semibold text-sm mb-6 border border-brand-100 dark:border-brand-800">
+                        <i class="fa-solid fa-sparkles text-amber-500"></i>
+                        نبتكر المستقبل لرقمة أعمالك
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-tight mb-6">
+                        نحو رؤية تقنية <br class="hidden sm:inline"/>
+                        <span class="bg-gradient-to-r from-brand-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+                            تتجاوز التوقعات
+                        </span>
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        نقدم استشارات وبرمجيات متقدمة لتطوير أعمالك، بأساليب مبتكرة وحلول برمجية تلبي تطلعات شركتك وتزيد من الإنتاجية والنمو.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#services" class="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold shadow-lg shadow-brand-600/30 text-center transition-all hover:scale-[1.02]">
+                            استكشف خدماتنا
+                        </a>
+                        <a href="#calculator" class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl font-bold border border-slate-200 dark:border-slate-700 text-center transition-all">
+                            تجربة الحاسبة التفاعلية
+                        </a>
+                    </div>
+
+                    <!-- Key Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+                        <div>
+                            <p class="text-3xl font-black text-brand-600 dark:text-brand-400">+150</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">مشروع ناجح</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-brand-600 dark:text-brand-400">99%</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">رضا العملاء</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-brand-600 dark:text-brand-400">+10</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">سنوات خبرة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Dynamic Mockup -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="w-full h-80 sm:h-96 rounded-3xl bg-gradient-to-tr from-brand-600 to-purple-600 p-1 shadow-2xl shadow-brand-500/20 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <div class="w-full h-full bg-slate-900 rounded-[22px] p-6 flex flex-col justify-between text-white overflow-hidden relative">
+                                <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                                    <div class="flex gap-2">
+                                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <span class="text-xs text-slate-400 font-mono">dashboard.ofuq.dev</span>
+                                </div>
+                                <div class="space-y-4 my-auto">
+                                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50 flex justify-between items-center">
+                                        <div>
+                                            <p class="text-xs text-slate-400">نمو المبيعات</p>
+                                            <p class="text-lg font-bold text-emerald-400">+48.5%</p>
+                                        </div>
+                                        <i class="fa-solid fa-chart-line text-2xl text-emerald-400"></i>
+                                    </div>
+                                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50 flex justify-between items-center">
+                                        <div>
+                                            <p class="text-xs text-slate-400">أداء النظام</p>
+                                            <p class="text-lg font-bold text-brand-400">ممتاز (99.9%)</p>
+                                        </div>
+                                        <i class="fa-solid fa-bolt text-2xl text-brand-400"></i>
+                                    </div>
+                                </div>
+                                <div class="text-center pt-2 border-t border-slate-800">
+                                    <span class="text-xs text-slate-400">نظام متكامل يستجيب متطلباتكم</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">عن الشركة</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2 mb-6">
+                        نحن نبني حلولاً برمجية تمكّن المؤسسات من الريادة
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        شركة "أفق" هي مؤسسة رائدة في تقديم الحلول البرمجية والتحول الرقمي. نجمع بين الإبداع البرمجي والتخطيط الاستراتيجي لمساعدة عملائنا على بلوغ أهدافهم التقنية بأفضل معايير الجودة العالمية.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">جودة برمجية عالية</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">كود نظيف، آمن، ومصمم للتوسع بشكل مرن مستقبلاً.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white">الالتزام بالمواعيد</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">تسليم المشاريع طبقاً للجدول الزمني المحدد بفضل منهجيات Agile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+                        <i class="fa-solid fa-laptop-code text-4xl text-brand-600 mb-3"></i>
+                        <h3 class="font-bold text-lg mb-1">تطوير الويب</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">تطبيقات ومواقع سريعة وفاخرة</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center mt-6">
+                        <i class="fa-solid fa-mobile-screen-button text-4xl text-indigo-500 mb-3"></i>
+                        <h3 class="font-bold text-lg mb-1">تطبيقات الجوال</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">أنظمة iOS و Android</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+                        <i class="fa-solid fa-cloud text-4xl text-purple-500 mb-3"></i>
+                        <h3 class="font-bold text-lg mb-1">الحوسبة السحابية</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">استضافة وحماية البيانات</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center mt-6">
+                        <i class="fa-solid fa-shield-halved text-4xl text-emerald-500 mb-3"></i>
+                        <h3 class="font-bold text-lg mb-1">الأمن السيبراني</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">تأمين الأنظمة والثغرات</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-sm uppercase">ماذا نقدم؟</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+                    خدماتنا التقنية المتكاملة
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 mt-4">
+                    نقدم مجموعة شاملة من الخدمات البرمجية والاستشارية لمساعدتك في بناء وتطوير مشروعك بكل كفاءة.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-50 dark:bg-brand-900/40 rounded-xl flex items-center justify-center text-brand-600 dark:text-brand-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">تطوير المواقع والمنصات</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                        تصميم وتطوير مواقع إلكترونية متجاوبة وسريعة تضمن أفضل تجربة مستخدم مع تقنيات حديثة.
+                    </p>
+                    <a href="#calculator" class="text-brand-600 dark:text-brand-400 text-sm font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        احسب تكلفة مشروعك <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-button"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">تطبيقات الجوال الذكية</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                        تطوير تطبيقات مبتكرة للهواتف الذكية تعمل بسلاسة على أنظمة أندرويد وآيفون.
+                    </p>
+                    <a href="#calculator" class="text-brand-600 dark:text-brand-400 text-sm font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        احسب تكلفة مشروعك <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-purple-50 dark:bg-purple-900/40 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">تصميم تجربة المستخدم UI/UX</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                        واجهات جذابة وسهلة الاستخدام ترتكز على دراسة سلوك المستهلك وزيادة معدل التحويل.
+                    </p>
+                    <a href="#calculator" class="text-brand-600 dark:text-brand-400 text-sm font-semibold inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        احسب تكلفة مشروعك <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Testing Sandbox / Project Calculator Section -->
+    <section id="calculator" class="py-20 bg-gradient-to-b from-slate-100 to-slate-50 dark:from-slate-900 dark:to-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 dark:border-slate-700">
+                <div class="text-center mb-8">
+                    <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 rounded-full text-xs font-bold mb-2">أداة تفاعلية للتجربة</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">حاسبة تقدير تكلفة وتفاصيل المشروع</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">جرب تحديد المواصفات لمعاينة الوقت والتكلفة التقريبية لمشروعك مع الشركة</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <!-- Controls -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <!-- Step 1: Project Type -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-3">1. نوع المشروع المطلوب:</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="projectTypes">
+                                <button type="button" data-type="website" data-price="400" data-time="2" class="calc-type-btn p-3 rounded-xl border-2 border-brand-600 bg-brand-50/50 dark:bg-brand-900/20 text-right transition-all">
+                                    <div class="font-bold text-slate-800 dark:text-white text-sm">موقع إلكتروني</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">تعريفي / شركة</div>
+                                </button>
+                                <button type="button" data-type="ecommerce" data-price="900" data-time="4" class="calc-type-btn p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-right transition-all">
+                                    <div class="font-bold text-slate-800 dark:text-white text-sm">متجر إلكتروني</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">شامل بوابة الدفع</div>
+                                </button>
+                                <button type="button" data-type="app" data-price="1500" data-time="6" class="calc-type-btn p-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-right transition-all">
+                                    <div class="font-bold text-slate-800 dark:text-white text-sm">تطبيق جوال</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400">iOS و Android</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Features Options -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-800 dark:text-slate-200 mb-3">2. مميزات إضافية:</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                    <span class="text-sm font-medium text-slate-700 dark:text-slate-300">لوحة تحكم وتدريب فريق العمل</span>
+                                    <input type="checkbox" class="calc-feature rounded text-brand-600 focus:ring-brand-500 w-5 h-5" data-price="200" data-time="1" checked>
+                                </label>
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                    <span class="text-sm font-medium text-slate-700 dark:text-slate-300">دعم لغات متعددة (عربي / إنجليزي)</span>
+                                    <input type="checkbox" class="calc-feature rounded text-brand-600 focus:ring-brand-500 w-5 h-5" data-price="150" data-time="1">
+                                </label>
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                                    <span class="text-sm font-medium text-slate-700 dark:text-slate-300">ربط مع الذكاء الاصطناعي والدعم الآلي</span>
+                                    <input type="checkbox" class="calc-feature rounded text-brand-600 focus:ring-brand-500 w-5 h-5" data-price="350" data-time="2">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Urgent Slider -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-sm font-bold text-slate-800 dark:text-slate-200">سرعة التنفيذ المطلوب:</label>
+                                <span id="speedLabel" class="text-xs font-bold text-brand-600 bg-brand-50 dark:bg-brand-900/40 px-2 py-1 rounded">عادي (بدون تكلفة إضافية)</span>
+                            </div>
+                            <input type="range" id="speedRange" min="1" max="2" step="0.5" value="1" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div class="bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between h-full shadow-lg">
+                        <div>
+                            <h3 class="text-lg font-bold border-b border-slate-800 pb-3 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-calculator text-brand-400"></i> التقدير المبدئي
+                            </h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-xs text-slate-400">التكلفة التقديرية:</p>
+                                    <p class="text-3xl font-black text-emerald-400 mt-1" id="totalPrice">$600</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">المدة الزمنية المتوقعة:</p>
+                                    <p class="text-xl font-bold text-slate-200 mt-1" id="totalTime">3 أسابيع</p>
+                                </div>
+                                <div class="p-3 bg-slate-800/80 rounded-xl border border-slate-700/50 text-xs text-slate-300">
+                                    <i class="fa-solid fa-circle-info text-brand-400 ml-1"></i> هذا التقدير تقريبي لتجربة الأداة ويمكن تخصيصه لاحقاً.
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="openModalWithDetails()" class="w-full mt-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-center transition-all">
+                            اطلب هذا المشـروع الآن
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-600 font-bold text-sm uppercase">معرض الأعمال</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+                        نماذج من مشاريعنا الأخيرة
+                    </h2>
+                </div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm max-w-md mt-4 md:mt-0">
+                    ألقِ نظرة على بعض الحلول التقنية والمشاريع المبتكرة التي نفذناها لعملائنا بنجاح.
+                </p>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Item 1 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all group">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden flex items-center justify-center">
+                        <i class="fa-solid fa-store text-5xl text-slate-400 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 right-3 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full">تطبيق متجر</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white mb-2">منصة "سلة التسوق"</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">تطبيق متجر إلكتروني متكامل لدعم مئات التجار وسرعة إتمام الطلبات.</p>
+                        <div class="flex items-center gap-2 text-xs font-mono text-brand-600 dark:text-brand-400">
+                            <span>#Flutter</span> <span>#NodeJS</span> <span>#Stripe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all group">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden flex items-center justify-center">
+                        <i class="fa-solid fa-chart-pie text-5xl text-slate-400 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">نظام إداري</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white mb-2">منظومة "إنجاز" ERP</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">لوحة تحكم سحابية لإدارة الموارد البشرية والمخازن والمالية.</p>
+                        <div class="flex items-center gap-2 text-xs font-mono text-brand-600 dark:text-brand-400">
+                            <span>#React</span> <span>#Tailwind</span> <span>#Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 3 -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700/60 hover:shadow-xl transition-all group">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden flex items-center justify-center">
+                        <i class="fa-solid fa-hospital-user text-5xl text-slate-400 group-hover:scale-110 transition-transform"></i>
+                        <span class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">تطبيق طبي</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white mb-2">منصة "صحتك"</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">نظام حجز المواعيد والاستشارات الطبية عبر الإنترنت بكل سهولة.</p>
+                        <div class="flex items-center gap-2 text-xs font-mono text-brand-600 dark:text-brand-400">
+                            <span>#VueJS</span> <span>#Laravel</span> <span>#MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-20 bg-slate-100 dark:bg-slate-800/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-brand-600 font-bold text-sm uppercase">تواصل معنا</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-2">
+                            جاهزون لبدء مشروعك القادم؟
+                        </h2>
+                        <p class="text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                            يسعدنا التواصل معك للإجابة عن استفساراتك وتقديم أفضل الاستشارات التقنية.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+                            <div class="w-12 h-12 bg-brand-50 dark:bg-brand-900/50 rounded-xl flex items-center justify-center text-brand-600 dark:text-brand-400 text-xl">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">البريد الإلكتروني</p>
+                                <p class="font-bold text-slate-800 dark:text-slate-100">info@ofuq-tech.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+                            <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/50 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xl">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">الهاتف / واتساب</p>
+                                <p class="font-bold text-slate-800 dark:text-slate-100" dir="ltr">+20 100 000 0000</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+                            <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/50 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">المقر الرئيسي</p>
+                                <p class="font-bold text-slate-800 dark:text-slate-100">القاهرة، مصر / الرياض، السعودية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">أرسل لنا رسالة</h3>
+                        
+                        <div id="formSuccessMessage" class="hidden mb-6 p-4 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 rounded-xl text-sm font-medium">
+                            <i class="fa-solid fa-circle-check ml-2"></i> تم استلام رسالتك بنجاح! سنقوم بالتواصل معك في أسرع وقت.
+                        </div>
+
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">الاسم الكامل</label>
+                                    <input type="text" required placeholder="محمد أحمد" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600 transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">البريد الإلكتروني</label>
+                                    <input type="email" required placeholder="name@domain.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600 transition-all">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">موضوع الرسالة</label>
+                                <input type="text" required placeholder="طلب استشارة / استفسار" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">تفاصيل الرسالة</label>
+                                <textarea rows="4" required placeholder="اكتب تفاصيل مشروعك أو سؤالك هنا..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600 transition-all"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30 transition-all">
+                                إرسال الرسالة الآن
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-slate-800 pb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <span class="text-2xl font-black text-white">أُفُق</span>
+                </div>
+                <div class="flex gap-6 text-xl">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="pt-8 text-center md:text-right flex flex-col md:flex-row justify-between text-xs text-slate-500">
+                <p>© 2026 شركة أفق للحلول الرقمية. جميع الحقوق محفوظة.</p>
+                <p class="mt-2 md:mt-0">تم التصميم والتطوير بنجاح - تجربة واجهة الشركة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Dialog -->
+    <div id="quoteModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-slate-200 dark:border-slate-700 transform transition-all">
+            <button onclick="closeModal()" class="absolute top-5 left-5 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">طلب استشارة مجانية</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">اترك بياناتك وسيتواصل معك مهندس حلول تقنية خلال ساعتين.</p>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">الاسم</label>
+                    <input type="text" required placeholder="أدخل اسمك الكريم" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">رقم الهاتف / الواتساب</label>
+                    <input type="tel" required placeholder="0500000000" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ملخص الفكرة أو المشروع</label>
+                    <textarea rows="3" id="modalNotes" placeholder="اكتب ملخصاً سرياً لمشروعك..." class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-600/30">
+                    تأكيد الطلب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Logic -->
+    <script src="https://arq-flow-website.vercel.app/widget.js" data-business-id="4251d74c-f3de-4dc8-afb9-81bf233ac972"></script>
+    <script>
+        // Dark Mode Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', toggleDarkMode);
+        themeToggleMobile.addEventListener('click', toggleDarkMode);
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Project Calculator Logic
+        let selectedBasePrice = 400;
+        let selectedBaseTime = 2;
+        let speedMultiplier = 1;
+
+        const typeBtns = document.querySelectorAll('.calc-type-btn');
+        typeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                typeBtns.forEach(b => {
+                    b.classList.remove('border-brand-600', 'bg-brand-50/50', 'dark:bg-brand-900/20');
+                    b.classList.add('border-slate-200', 'dark:border-slate-700');
+                });
+                btn.classList.remove('border-slate-200', 'dark:border-slate-700');
+                btn.classList.add('border-brand-600', 'bg-brand-50/50', 'dark:bg-brand-900/20');
+                
+                selectedBasePrice = parseInt(btn.dataset.price);
+                selectedBaseTime = parseInt(btn.dataset.time);
+                updateCalculator();
+            });
+        });
+
+        const featureCheckboxes = document.querySelectorAll('.calc-feature');
+        featureCheckboxes.forEach(cb => {
+            cb.addEventListener('change', updateCalculator);
+        });
+
+        const speedRange = document.getElementById('speedRange');
+        const speedLabel = document.getElementById('speedLabel');
+
+        speedRange.addEventListener('input', (e) => {
+            speedMultiplier = parseFloat(e.target.value);
+            if (speedMultiplier === 1) {
+                speedLabel.textContent = "عادي (بدون تكلفة إضافية)";
+            } else if (speedMultiplier === 1.5) {
+                speedLabel.textContent = "سريع (+25% تكلفة، وقت أقل)";
+            } else {
+                speedLabel.textContent = "عاجل جداً (+50% تكلفة، نصف الوقت)";
+            }
+            updateCalculator();
+        });
+
+        function updateCalculator() {
+            let extraPrice = 0;
+            let extraTime = 0;
+
+            featureCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    extraPrice += parseInt(cb.dataset.price);
+                    extraTime += parseInt(cb.dataset.time);
+                }
+            });
+
+            let rawPrice = (selectedBasePrice + extraPrice) * (speedMultiplier === 1 ? 1 : (speedMultiplier === 1.5 ? 1.25 : 1.5));
+            let rawTime = Math.max(1, Math.round((selectedBaseTime + extraTime) / speedMultiplier));
+
+            document.getElementById('totalPrice').textContent = `$${Math.round(rawPrice)}`;
+            document.getElementById('totalTime').textContent = `${rawTime} أسابيع`;
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('quoteModal');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        function openModalWithDetails() {
+            const price = document.getElementById('totalPrice').textContent;
+            const time = document.getElementById('totalTime').textContent;
+            document.getElementById('modalNotes').value = `تفاصيل الطلب المحسوب: تكلفة تقديرية ${price} بمدة زمنية ${time}.`;
+            openModal();
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('formSuccessMessage').classList.remove('hidden');
+            document.getElementById('contactForm').reset();
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            const msg = document.getElementById('formSuccessMessage');
+            msg.textContent = "تم استلام طلب الاستشارة بنجاح! سيتم التواصل معك قريباً.";
+            msg.classList.remove('hidden');
+            msg.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
